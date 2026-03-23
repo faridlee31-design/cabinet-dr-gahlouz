@@ -62,18 +62,7 @@
     box-shadow: 0 2px 32px rgba(26,32,25,0.05);
   }
 
-  .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 10px; }
-  .nav-logo-icon {
-    width: 42px;
-    height: 42px;
-    background-image: url('logo.jpg');
-    background-size: 94px auto;
-    background-position: -25px -28px;
-    background-repeat: no-repeat;
-    flex-shrink: 0;
-    filter: sepia(1) hue-rotate(95deg) saturate(1.2) brightness(0.82) contrast(1.05);
-    mix-blend-mode: multiply;
-  }
+  .nav-logo { text-decoration: none; }
   .nav-logo-dr {
     font-family: var(--font-b);
     font-size: 0.7rem;
@@ -579,11 +568,8 @@
 <!-- ── NAV ── -->
 <nav id="main-nav" class="scrolled">
   <a href="#accueil" class="nav-logo">
-    <div class="nav-logo-icon"></div>
-    <div>
-      <span class="nav-logo-dr" data-i18n="logo-dr">Cabinet dentaire</span>
-      <span class="nav-logo-name" data-i18n="logo-name">Dr Gahlouz</span>
-    </div>
+    <span class="nav-logo-dr" data-i18n="logo-dr">Cabinet dentaire</span>
+    <span class="nav-logo-name" data-i18n="logo-name">Dr Gahlouz</span>
   </a>
   <ul class="nav-links">
     <li><a href="#soins" data-i18n="nav-soins">Soins</a></li>
