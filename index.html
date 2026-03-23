@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr Gahlouz — Cabinet Dentaire · Hammam Bou Hadjar</title>
+<meta name="description" content="Cabinet dentaire du Dr Gahlouz à Hammam Bou Hadjar, Aïn Témouchent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage:     #3d5c45;
+    --sage-m:   #5a7a62;
+    --sage-l:   #8aaa92;
+    --sage-xl:  #e6ede8;
+    --sage-xxl: #f2f6f3;
+    --sand:     #f6f1eb;
+    --sand-d:   #ebe3d8;
+    --cream:    #faf8f5;
+    --dark:     #1a2019;
+    --mid:      #454940;
+    --muted:    #7a8075;
+    --stone:    #c4bdb2;
+    --gold:     #b09a78;
+    --font-d:   'Playfair Display', Georgia, serif;
+    --font-b:   'Outfit', system-ui, sans-serif;
+    --font-ar:  'Noto Naskh Arabic', serif;
+    --nav-h:    70px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-b);
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Arabic mode */
+  [dir="rtl"] body,
+  [dir="rtl"] { font-family: var(--font-ar); }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { font-family: var(--font-ar); }
+  [dir="rtl"] .sec-title, [dir="rtl"] .avis-text { font-family: var(--font-ar); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px;
+    background: rgba(250,248,245,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  nav.scrolled {
+    border-color: rgba(196,189,178,0.35);
+    box-shadow: 0 2px 32px rgba(26,32,25,0.05);
+  }
+
+  .nav-logo { text-decoration: none; }
+  .nav-logo-dr {
+    font-family: var(--font-b);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage-m);
+    display: block;
+    margin-bottom: 1px;
+  }
+  .nav-logo-name {
+    font-family: var(--font-d);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--dark);
+    display: block;
+    letter-spacing: 0.02em;
+  }
+  [dir="rtl"] .nav-logo-name { font-family: var(--font-ar); }
+  [dir="rtl"] .nav-logo-dr { letter-spacing: 0; }
+
+  .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+  }
+
+  .nav-links { display: flex; gap: 34px; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+  [dir="rtl"] .nav-links a { letter-spacing: 0; font-size: 0.9rem; }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0; right: 0;
+    height: 1px;
+    background: var(--sage);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+  .nav-links a:hover { color: var(--sage); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* Lang toggle */
+  .lang-btn {
+    background: transparent;
+    border: 1.5px solid var(--sage-l);
+    color: var(--sage);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    font-family: var(--font-b);
+  }
+  [dir="rtl"] .lang-btn { font-family: var(--font-ar); letter-spacing: 0; font-size: 0.85rem; }
+  .lang-btn:hover { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+
+  .nav-rdv {
+    display: flex; align-items: center; gap: 9px;
+    background: var(--sage);
+    color: var(--cream);
+    font-size: 0.73rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  [dir="rtl"] .nav-rdv { letter-spacing: 0; font-size: 0.9rem; }
+  .nav-rdv:hover { background: var(--dark); }
+
+  /* ── HERO ── */
+  #accueil {
+    min-height: 100vh;
+    padding-top: var(--nav-h);
+    display: grid;
+    grid-template-columns: 55% 45%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  [dir="rtl"] .hero-left { padding: 80px 80px 80px 64px; }
+
+  .hero-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .hero-location-line {
+    width: 28px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .hero-location-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  [dir="rtl"] .hero-location-text { letter-spacing: 0; font-size: 0.85rem; }
+
+  .hero-left h1 {
+    font-family: var(--font-d);
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.13;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  [dir="rtl"] .hero-left h1 { font-family: var(--font-ar); line-height: 1.5; }
+  .hero-left h1 em { font-style: italic; color: var(--sage); }
+  [dir="rtl"] .hero-left h1 em { font-style: normal; font-weight: 600; }
+
+  .hero-subtitle-name {
+    font-family: var(--font-d);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-weight: 400;
+    color: var(--sage-m);
+    letter-spacing: 0.05em;
+    margin-bottom: 28px;
+  }
+  [dir="rtl"] .hero-subtitle-name { font-family: var(--font-ar); letter-spacing: 0; }
+
+  .hero-left p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 44px;
+  }
+  [dir="rtl"] .hero-left p { font-size: 1rem; line-height: 2; }
+
+  .hero-btns { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--sage);
+    color: var(--cream);
+    font-family: var(--font-b);
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 15px 34px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  [dir="rtl"] .btn-primary { font-family: var(--font-ar); letter-spacing: 0; font-size: 0.95rem; }
+  .btn-primary:hover { background: var(--dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    font-size: 0.8rem;
+    color: var(--mid);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: color 0.2s;
+  }
+  [dir="rtl"] .btn-outline { font-size: 0.95rem; }
+  .btn-outline:hover { color: var(--sage); }
+  .btn-outline span { font-size: 1.1em; }
+
+  .hero-social {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+    padding-left: 20px;
+    border-left: 1px solid var(--sand-d);
+  }
+  [dir="rtl"] .hero-social { margin-left: 0; margin-right: 8px; padding-left: 0; padding-right: 20px; border-left: none; border-right: 1px solid var(--sand-d); }
+  .hero-social a {
+    display: flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--sand-d);
+    color: var(--muted); text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .hero-social a svg { width: 14px; height: 14px; fill: currentColor; }
+  .hero-social a:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-xxl); }
+  .hs-insta:hover { background: rgba(225,48,108,0.08) !important; color: #e1306c !important; border-color: #e1306c !important; }
+  .hs-fb:hover    { background: rgba(24,119,242,0.08) !important; color: #1877f2 !important; border-color: #1877f2 !important; }
+  .hs-tt:hover    { background: rgba(105,201,208,0.08) !important; color: #010101 !important; border-color: #010101 !important; }
+
+  .hero-badges {
+    display: flex;
+    gap: 20px;
+    margin-top: 52px;
+    padding-top: 40px;
+    border-top: 1px solid var(--sand-d);
+  }
+  .badge-item { text-align: center; }
+  .badge-num {
+    font-family: var(--font-d);
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1;
+  }
+  [dir="rtl"] .badge-num { font-family: var(--font-ar); }
+  .badge-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+  [dir="rtl"] .badge-label { letter-spacing: 0; font-size: 0.8rem; }
+  .badge-sep { width: 1px; background: var(--sand-d); align-self: stretch; }
+
+  /* Hero right panel */
+  .hero-right {
+    position: relative;
+    background: var(--sage-xl);
+    overflow: hidden;
+  }
+  .hero-right-pattern {
+    position: absolute; inset: 0; opacity: 0.35;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(61,92,69,0.08) 18px, rgba(61,92,69,0.08) 19px);
+  }
+  .hero-right-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 24px;
+  }
+  .hero-monogram {
+    width: 110px; height: 110px;
+    border: 1.5px solid rgba(61,92,69,0.35);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-monogram-inner {
+    font-family: var(--font-d);
+    font-size: 2.6rem; font-weight: 400;
+    color: var(--sage); font-style: italic;
+  }
+  .hero-right-label {
+    font-size: 0.72rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sage-m); text-align: center;
+  }
+  [dir="rtl"] .hero-right-label { letter-spacing: 0; font-size: 0.85rem; font-family: var(--font-ar); }
+  .hero-right-sub {
+    font-family: var(--font-d); font-size: 1.1rem;
+    color: var(--sage); text-align: center; font-style: italic;
+  }
+  [dir="rtl"] .hero-right-sub { font-family: var(--font-ar); font-style: normal; font-weight: 600; }
+  .hero-img-note {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage-l); white-space: nowrap;
+    border: 1px dashed rgba(90,122,98,0.35); padding: 6px 14px;
+  }
+
+  /* ── SHARED ── */
+  section { scroll-margin-top: var(--nav-h); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+
+  .sec-head { text-align: center; margin-bottom: 60px; }
+  .sec-eye {
+    font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--sage-m);
+    display: block; margin-bottom: 14px;
+  }
+  [dir="rtl"] .sec-eye { letter-spacing: 0; font-size: 0.85rem; }
+  .sec-title {
+    font-family: var(--font-d);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 400; color: var(--dark); line-height: 1.2;
+  }
+  [dir="rtl"] .sec-title { font-family: var(--font-ar); line-height: 1.6; }
+  .sec-title em { font-style: italic; color: var(--sage); }
+  [dir="rtl"] .sec-title em { font-style: normal; font-weight: 600; }
+
+  /* ── SOINS ── */
+  #soins { padding: 100px 0; background: var(--sand); }
+  .soins-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+  }
+  .soin-card {
+    background: var(--cream); padding: 40px 32px 36px;
+    position: relative; cursor: default; transition: background 0.3s; overflow: hidden;
+  }
+  .soin-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--sage);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+  }
+  [dir="rtl"] .soin-card::before { transform-origin: right; }
+  .soin-card:hover { background: var(--sage-xxl); }
+  .soin-card:hover::before { transform: scaleX(1); }
+  .soin-icon {
+    width: 44px; height: 44px; background: var(--sage-xl); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px; font-size: 1.2rem;
+  }
+  .soin-num {
+    position: absolute; top: 28px; right: 28px;
+    font-family: var(--font-d); font-size: 2.2rem; font-weight: 400;
+    color: rgba(196,189,178,0.35); line-height: 1;
+  }
+  [dir="rtl"] .soin-num { right: auto; left: 28px; font-family: var(--font-ar); }
+  .soin-title {
+    font-family: var(--font-d); font-size: 1.2rem; font-weight: 400;
+    color: var(--dark); margin-bottom: 10px;
+  }
+  [dir="rtl"] .soin-title { font-family: var(--font-ar); }
+  .soin-desc {
+    font-size: 0.865rem; font-weight: 300; color: var(--muted); line-height: 1.75;
+  }
+  [dir="rtl"] .soin-desc { font-size: 0.95rem; line-height: 2; }
+
+  /* ── POURQUOI ── */
+  #pourquoi { padding: 100px 0; background: var(--cream); }
+  .pourquoi-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .pourquoi-left h2 {
+    font-family: var(--font-d); font-size: clamp(1.9rem, 3vw, 2.5rem);
+    font-weight: 400; color: var(--dark); line-height: 1.2; margin-bottom: 20px;
+  }
+  [dir="rtl"] .pourquoi-left h2 { font-family: var(--font-ar); line-height: 1.6; }
+  .pourquoi-left h2 em { font-style: italic; color: var(--sage); }
+  [dir="rtl"] .pourquoi-left h2 em { font-style: normal; font-weight: 700; }
+  .pourquoi-left p {
+    font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 36px;
+  }
+  [dir="rtl"] .pourquoi-left p { font-size: 1rem; line-height: 2; }
+  .valeurs { display: flex; flex-direction: column; gap: 16px; }
+  .valeur { display: flex; align-items: flex-start; gap: 16px; }
+  .valeur-dot {
+    width: 8px; height: 8px; background: var(--sage); border-radius: 50%;
+    flex-shrink: 0; margin-top: 7px;
+  }
+  .valeur-title { font-weight: 500; font-size: 0.9rem; color: var(--dark); margin-bottom: 3px; }
+  [dir="rtl"] .valeur-title { font-size: 1rem; }
+  .valeur-desc { font-size: 0.83rem; font-weight: 300; color: var(--muted); line-height: 1.65; }
+  [dir="rtl"] .valeur-desc { font-size: 0.95rem; line-height: 2; }
+  .pourquoi-right { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .stat-box { background: var(--sand); padding: 32px 24px; text-align: center; }
+  .stat-box:nth-child(2) { background: var(--sage); }
+  .stat-box:nth-child(2) .stat-n { color: var(--cream); }
+  .stat-box:nth-child(2) .stat-l { color: rgba(250,248,245,0.65); }
+  .stat-n {
+    font-family: var(--font-d); font-size: 2.4rem; font-weight: 400;
+    color: var(--dark); line-height: 1; margin-bottom: 8px;
+  }
+  [dir="rtl"] .stat-n { font-family: var(--font-ar); }
+  .stat-l {
+    font-size: 0.72rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  [dir="rtl"] .stat-l { letter-spacing: 0; font-size: 0.85rem; }
+
+  /* ── AVIS ── */
+  #avis { padding: 100px 0; background: var(--dark); position: relative; overflow: hidden; }
+  .avis-bg-quote {
+    position: absolute; top: -60px; right: -20px;
+    font-family: var(--font-d); font-size: 400px; font-weight: 400;
+    color: rgba(255,255,255,0.025); line-height: 1; pointer-events: none;
+  }
+  [dir="rtl"] .avis-bg-quote { right: auto; left: -20px; }
+  #avis .sec-eye { color: var(--stone); }
+  #avis .sec-title { color: var(--cream); }
+  .avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .avis-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    padding: 36px 28px; transition: background 0.3s;
+  }
+  .avis-card:hover { background: rgba(255,255,255,0.07); }
+  .avis-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 4px; margin-bottom: 20px; }
+  [dir="rtl"] .avis-stars { letter-spacing: 2px; }
+  .avis-text {
+    font-family: var(--font-d); font-size: 1rem; font-weight: 400; font-style: italic;
+    color: rgba(250,248,245,0.82); line-height: 1.7; margin-bottom: 24px;
+  }
+  [dir="rtl"] .avis-text { font-family: var(--font-ar); font-style: normal; font-size: 1rem; line-height: 2; }
+  .avis-hr { width: 28px; height: 1px; background: var(--gold); margin-bottom: 16px; }
+  .avis-author {
+    font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--stone);
+  }
+  [dir="rtl"] .avis-author { letter-spacing: 0; font-size: 0.85rem; }
+
+  /* ── CONTACT ── */
+  #contact { padding: 100px 0; background: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); padding: 36px 80px;
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo { text-decoration: none; }
+  .footer-logo-dr {
+    font-size: 0.65rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--stone); display: block;
+  }
+  [dir="rtl"] .footer-logo-dr { letter-spacing: 0; font-size: 0.8rem; font-family: var(--font-ar); }
+  .footer-logo-name {
+    font-family: var(--font-d); font-size: 1.1rem;
+    font-weight: 400; color: var(--cream); display: block;
+  }
+  [dir="rtl"] .footer-logo-name { font-family: var(--font-ar); }
+  .footer-center {
+    font-size: 0.75rem; color: rgba(196,189,178,0.5); text-align: center;
+  }
+  [dir="rtl"] .footer-center { font-size: 0.85rem; font-family: var(--font-ar); }
+  .footer-links { display: flex; gap: 22px; align-items: center; }
+  .footer-links a {
+    font-size: 0.72rem; color: var(--stone); text-decoration: none;
+    letter-spacing: 0.06em; transition: color 0.2s;
+  }
+  [dir="rtl"] .footer-links a { letter-spacing: 0; font-size: 0.85rem; font-family: var(--font-ar); }
+  .footer-links a:hover { color: var(--cream); }
+
+  .social-links { display: flex; gap: 14px; align-items: center; }
+  .social-links a {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--stone); text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .social-links a svg { width: 16px; height: 16px; fill: currentColor; }
+  .social-links a:hover { background: rgba(255,255,255,0.08); color: var(--cream); border-color: rgba(255,255,255,0.3); }
+  .social-links a.insta:hover { background: #e1306c; border-color: #e1306c; color: #fff; }
+  .social-links a.fb:hover    { background: #1877f2; border-color: #1877f2; color: #fff; }
+  .social-links a.tt:hover    { background: #010101; border-color: #69c9d0; color: #69c9d0; }
+
+  /* ── STICKY RDV ── */
+  .sticky-rdv {
+    position: fixed; bottom: 28px; right: 28px;
+    background: var(--sage); color: var(--cream);
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 13px 26px 13px 20px;
+    text-decoration: none; z-index: 99;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 28px rgba(61,92,69,0.28);
+    transition: background 0.2s, transform 0.2s;
+  }
+  [dir="rtl"] .sticky-rdv { right: auto; left: 28px; letter-spacing: 0; font-size: 0.9rem; font-family: var(--font-ar); padding: 13px 20px 13px 26px; }
+  .sticky-rdv:hover { background: var(--dark); transform: translateY(-2px); }
+  .sticky-dot {
+    width: 8px; height: 8px; background: #a8d4a8;
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.8); }
+  }
+
+  /* ── FADE IN ── */
+  .fi-anim { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fi-anim.vis { opacity: 1; transform: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    :root { --nav-h: 60px; }
+    nav { padding: 0 20px; gap: 10px; }
+    .nav-links { display: none; }
+    #accueil { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 48px 28px 60px; }
+    [dir="rtl"] .hero-left { padding: 48px 28px 60px; }
+    .hero-left h1 { font-size: 2.4rem; }
+    #soins, #pourquoi, #avis, #contact { padding: 64px 0; }
+    .container { padding: 0 28px; }
+    .soins-grid, .avis-grid { grid-template-columns: 1fr; }
+    .pourquoi-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pourquoi-right { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 28px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav" class="scrolled">
+  <a href="#accueil" class="nav-logo">
+    <span class="nav-logo-dr" data-i18n="logo-dr">Cabinet dentaire</span>
+    <span class="nav-logo-name" data-i18n="logo-name">Dr Gahlouz</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#soins" data-i18n="nav-soins">Soins</a></li>
+    <li><a href="#pourquoi" data-i18n="nav-pourquoi">Le cabinet</a></li>
+    <li><a href="#avis" data-i18n="nav-avis">Avis</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+  </ul>
+  <div style="display:flex; align-items:center; gap:14px;">
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">العربية</button>
+    <a href="#contact" class="nav-rdv" data-i18n="nav-rdv">Prendre rendez-vous</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="accueil">
+  <div class="hero-left">
+    <div class="hero-location">
+      <div class="hero-location-line"></div>
+      <div class="hero-location-text" data-i18n="hero-location">Hammam Bou Hadjar · Aïn Témouchent</div>
+    </div>
+    <h1 data-i18n="hero-h1">Un sourire soigné,<br>une <em>confiance retrouvée</em></h1>
+    <div class="hero-subtitle-name" data-i18n="hero-subtitle">Dr Gahlouz — Chirurgien-dentiste</div>
+    <p data-i18n="hero-p">Bienvenue dans un cabinet à taille humaine, où chaque patient est accueilli avec attention. Des soins dentaires de qualité, dans un cadre apaisant et bienveillant.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary" data-i18n="hero-btn1">Prendre rendez-vous</a>
+      <a href="#soins" class="btn-outline" data-i18n="hero-btn2">Voir nos soins <span>→</span></a>
+      <div class="hero-social">
+        <a href="https://www.instagram.com/drgahlouz.cabinet" target="_blank" rel="noopener" class="hs-insta" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/drgahlouz.cabinet" target="_blank" rel="noopener" class="hs-fb" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@drgahlouz.cabinet" target="_blank" rel="noopener" class="hs-tt" title="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-badges">
+      <div class="badge-item">
+        <div class="badge-num">30+</div>
+        <div class="badge-label" data-i18n="badge1">Années d'expérience</div>
+      </div>
+      <div class="badge-sep"></div>
+      <div class="badge-item">
+        <div class="badge-num">100%</div>
+        <div class="badge-label" data-i18n="badge2">Dédié à votre confort</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-pattern"></div>
+    <div class="hero-right-content">
+      <div class="hero-monogram"><div class="hero-monogram-inner">G</div></div>
+      <div class="hero-right-label" data-i18n="logo-dr">Cabinet dentaire</div>
+      <div class="hero-right-sub" data-i18n="logo-name">Dr Gahlouz</div>
+      <div class="hero-right-label" style="margin-top:4px;" data-i18n="hero-right-loc">Hammam Bou Hadjar · Algérie</div>
+    </div>
+    <div class="hero-img-note">📷 Photo du cabinet à ajouter</div>
+  </div>
+</section>
+
+<!-- ── SOINS ── -->
+<section id="soins">
+  <div class="container">
+    <div class="sec-head fi-anim vis">
+      <span class="sec-eye" data-i18n="soins-eye">Nos prestations</span>
+      <h2 class="sec-title" data-i18n="soins-title">Des soins complets pour<br>toute la <em>famille</em></h2>
+    </div>
+    <div class="soins-grid">
+      <div class="soin-card fi-anim vis">
+        <div class="soin-icon">🦷</div>
+        <div class="soin-num">01</div>
+        <h3 class="soin-title" data-i18n="s1-title">Soins conservateurs</h3>
+        <p class="soin-desc" data-i18n="s1-desc">Traitement des caries, soins de la pulpe et restaurations en composite. Préserver vos dents naturelles est notre priorité.</p>
+      </div>
+      <div class="soin-card fi-anim vis">
+        <div class="soin-icon">✨</div>
+        <div class="soin-num">02</div>
+        <h3 class="soin-title" data-i18n="s2-title">Détartrage &amp; prévention</h3>
+        <p class="soin-desc" data-i18n="s2-desc">Bilan bucco-dentaire annuel, détartrage et conseils d'hygiène personnalisés pour maintenir une bonne santé dentaire.</p>
+      </div>
+      <div class="soin-card fi-anim vis">
+        <div class="soin-icon">🌿</div>
+        <div class="soin-num">03</div>
+        <h3 class="soin-title" data-i18n="s3-title">Esthétique dentaire</h3>
+        <p class="soin-desc" data-i18n="s3-desc">Blanchiment professionnel, facettes et restaurations esthétiques pour un sourire naturel et harmonieux.</p>
+      </div>
+      <div class="soin-card fi-anim vis">
+        <div class="soin-icon">🔧</div>
+        <div class="soin-num">04</div>
+        <h3 class="soin-title" data-i18n="s4-title">Prothèses dentaires</h3>
+        <p class="soin-desc" data-i18n="s4-desc">Couronnes, bridges et appareils amovibles sur mesure. Des solutions durables pour remplacer vos dents manquantes.</p>
+      </div>
+      <div class="soin-card fi-anim vis">
+        <div class="soin-icon">👶</div>
+        <div class="soin-num">05</div>
+        <h3 class="soin-title" data-i18n="s5-title">Soins pédiatriques</h3>
+        <p class="soin-desc" data-i18n="s5-desc">Un accompagnement doux et patient pour les enfants. Nous veillons à ce que chaque visite soit une expérience positive.</p>
+      </div>
+      <div class="soin-card fi-anim vis">
+        <div class="soin-icon">🚨</div>
+        <div class="soin-num">06</div>
+        <h3 class="soin-title" data-i18n="s6-title">Urgences dentaires</h3>
+        <p class="soin-desc" data-i18n="s6-desc">Douleur aiguë, dent cassée, abcès… Nous faisons tout pour vous recevoir rapidement et soulager votre douleur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── POURQUOI ── -->
+<section id="pourquoi">
+  <div class="container">
+    <div class="pourquoi-grid">
+      <div class="pourquoi-left fi-anim vis">
+        <h2 data-i18n="pq-title">Pourquoi choisir<br>le cabinet <em>Dr Gahlouz</em> ?</h2>
+        <p data-i18n="pq-p">Un cabinet de proximité où la relation de confiance avec le patient passe avant tout. Chaque soin est réalisé avec soin, précision et dans le respect de votre confort.</p>
+        <div class="valeurs">
+          <div class="valeur">
+            <div class="valeur-dot"></div>
+            <div>
+              <div class="valeur-title" data-i18n="v1-title">Écoute &amp; bienveillance</div>
+              <div class="valeur-desc" data-i18n="v1-desc">Vos questions, vos inquiétudes — nous prenons le temps d'expliquer chaque étape avant d'agir.</div>
+            </div>
+          </div>
+          <div class="valeur">
+            <div class="valeur-dot"></div>
+            <div>
+              <div class="valeur-title" data-i18n="v2-title">Matériel moderne</div>
+              <div class="valeur-desc" data-i18n="v2-desc">Équipements récents pour des soins plus précis, plus rapides et plus confortables.</div>
+            </div>
+          </div>
+          <div class="valeur">
+            <div class="valeur-dot"></div>
+            <div>
+              <div class="valeur-title" data-i18n="v3-title">Accessibilité locale</div>
+              <div class="valeur-desc" data-i18n="v3-desc">Au cœur de Hammam Bou Hadjar, le cabinet est facilement accessible à toute la famille.</div>
+            </div>
+          </div>
+          <div class="valeur">
+            <div class="valeur-dot"></div>
+            <div>
+              <div class="valeur-title" data-i18n="v4-title">Stérilisation irréprochable</div>
+              <div class="valeur-desc" data-i18n="v4-desc">Protocoles stricts d'hygiène et de stérilisation pour votre sécurité à chaque visite.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pourquoi-right fi-anim vis">
+        <div class="stat-box">
+          <div class="stat-n">30+</div>
+          <div class="stat-l" data-i18n="stat1">Ans d'expérience</div>
+        </div>
+        <div class="stat-box" style="background:var(--sage)">
+          <div class="stat-n" style="color:var(--cream);">6</div>
+          <div class="stat-l" style="color:rgba(250,248,245,0.65);" data-i18n="stat2">Spécialités</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AVIS ── -->
+<section id="avis">
+  <div class="avis-bg-quote">"</div>
+  <div class="container">
+    <div class="sec-head fi-anim vis">
+      <span class="sec-eye" data-i18n="avis-eye">Témoignages</span>
+      <h2 class="sec-title" data-i18n="avis-title">Ce que disent<br>nos <em>patients</em></h2>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card fi-anim vis">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text" data-i18n="avis1-text">« Le Dr Gahlouz est extrêmement professionnel et attentionné. J'avais très peur du dentiste, il a su me mettre à l'aise dès la première consultation. »</p>
+        <div class="avis-hr"></div>
+        <div class="avis-author" data-i18n="avis1-author">Fatima B. — Patiente</div>
+      </div>
+      <div class="avis-card fi-anim vis">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text" data-i18n="avis2-text">« Soin rapide, sans douleur et résultat impeccable. L'accueil est chaleureux et le cabinet est très propre. Je recommande à toute ma famille. »</p>
+        <div class="avis-hr"></div>
+        <div class="avis-author" data-i18n="avis2-author">Karim O. — Patient</div>
+      </div>
+      <div class="avis-card fi-anim vis">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text" data-i18n="avis3-text">« Mon fils avait peur des dentistes mais le docteur a été formidable avec lui. Depuis, il n'hésite plus à venir à ses rendez-vous. Merci ! »</p>
+        <div class="avis-hr"></div>
+        <div class="avis-author" data-i18n="avis3-author">Nadia M. — Patiente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head fi-anim vis">
+      <span class="sec-eye" data-i18n="contact-eye">Contact</span>
+      <h2 class="sec-title" data-i18n="contact-title">Prenons <em>rendez-vous</em></h2>
+    </div>
+    <div class="fi-anim vis" style="text-align:center; padding: 40px 0 32px;">
+      <a href="tel:0541622939" data-i18n="contact-btn" style="display:inline-flex; align-items:center; gap:10px; background:var(--sage); color:#fff; font-size:1.1rem; font-weight:600; padding:18px 40px; border-radius:50px; text-decoration:none; letter-spacing:0.02em;">
+        📞 Nous contacter — 05 41 62 29 39
+      </a>
+    </div>
+    <div class="fi-anim vis" style="max-width:760px; margin:0 auto 60px; border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(26,32,25,0.12); border:1px solid var(--sand-d);">
+      <iframe
+        src="https://www.google.com/maps?q=Hammam+Bou+Hadjar,+Ain+Temouchent,+Algerie&output=embed"
+        width="100%" height="340" style="border:0; display:block;"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="#accueil" class="footer-logo">
+    <span class="footer-logo-dr" data-i18n="logo-dr">Cabinet dentaire</span>
+    <span class="footer-logo-name" data-i18n="logo-name">Dr Gahlouz</span>
+  </a>
+  <div class="footer-center">
+    <span data-i18n="footer-loc">Hammam Bou Hadjar · Aïn Témouchent · Algérie</span><br>
+    <span style="opacity:0.4;" data-i18n="footer-copy">© 2025 Cabinet dentaire Dr Gahlouz</span>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:14px;">
+    <div class="social-links">
+      <a href="https://www.instagram.com/drgahlouz.cabinet" target="_blank" rel="noopener" class="insta" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/drgahlouz.cabinet" target="_blank" rel="noopener" class="fb" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@drgahlouz.cabinet" target="_blank" rel="noopener" class="tt" title="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="#" data-i18n="footer-legal">Mentions légales</a>
+      <a href="#" data-i18n="footer-privacy">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── STICKY RDV ── -->
+<a href="tel:0541622939" class="sticky-rdv" id="sticky-rdv">
+  <span class="sticky-dot"></span>
+  <span data-i18n="sticky">Prendre RDV</span>
+</a>
+
+<script>
+  // ── Translations ──
+  const t = {
+    fr: {
+      'logo-dr':        'Cabinet dentaire',
+      'logo-name':      'Dr Gahlouz',
+      'nav-soins':      'Soins',
+      'nav-pourquoi':   'Le cabinet',
+      'nav-avis':       'Avis',
+      'nav-contact':    'Contact',
+      'nav-rdv':        'Prendre rendez-vous',
+      'hero-location':  'Hammam Bou Hadjar · Aïn Témouchent',
+      'hero-h1':        'Un sourire soigné,<br>une <em>confiance retrouvée</em>',
+      'hero-subtitle':  'Dr Gahlouz — Chirurgien-dentiste',
+      'hero-p':         'Bienvenue dans un cabinet à taille humaine, où chaque patient est accueilli avec attention. Des soins dentaires de qualité, dans un cadre apaisant et bienveillant.',
+      'hero-btn1':      'Prendre rendez-vous',
+      'hero-btn2':      'Voir nos soins <span>→</span>',
+      'badge1':         "Années d'expérience",
+      'badge2':         'Dédié à votre confort',
+      'hero-right-loc': 'Hammam Bou Hadjar · Algérie',
+      'soins-eye':      'Nos prestations',
+      'soins-title':    'Des soins complets pour<br>toute la <em>famille</em>',
+      's1-title':       'Soins conservateurs',
+      's1-desc':        "Traitement des caries, soins de la pulpe et restaurations en composite. Préserver vos dents naturelles est notre priorité.",
+      's2-title':       'Détartrage &amp; prévention',
+      's2-desc':        "Bilan bucco-dentaire annuel, détartrage et conseils d'hygiène personnalisés pour maintenir une bonne santé dentaire.",
+      's3-title':       'Esthétique dentaire',
+      's3-desc':        'Blanchiment professionnel, facettes et restaurations esthétiques pour un sourire naturel et harmonieux.',
+      's4-title':       'Prothèses dentaires',
+      's4-desc':        'Couronnes, bridges et appareils amovibles sur mesure. Des solutions durables pour remplacer vos dents manquantes.',
+      's5-title':       'Soins pédiatriques',
+      's5-desc':        "Un accompagnement doux et patient pour les enfants. Nous veillons à ce que chaque visite soit une expérience positive.",
+      's6-title':       'Urgences dentaires',
+      's6-desc':        "Douleur aiguë, dent cassée, abcès… Nous faisons tout pour vous recevoir rapidement et soulager votre douleur.",
+      'pq-title':       'Pourquoi choisir<br>le cabinet <em>Dr Gahlouz</em> ?',
+      'pq-p':           "Un cabinet de proximité où la relation de confiance avec le patient passe avant tout. Chaque soin est réalisé avec soin, précision et dans le respect de votre confort.",
+      'v1-title':       'Écoute &amp; bienveillance',
+      'v1-desc':        "Vos questions, vos inquiétudes — nous prenons le temps d'expliquer chaque étape avant d'agir.",
+      'v2-title':       'Matériel moderne',
+      'v2-desc':        'Équipements récents pour des soins plus précis, plus rapides et plus confortables.',
+      'v3-title':       'Accessibilité locale',
+      'v3-desc':        'Au cœur de Hammam Bou Hadjar, le cabinet est facilement accessible à toute la famille.',
+      'v4-title':       'Stérilisation irréprochable',
+      'v4-desc':        'Protocoles stricts d\'hygiène et de stérilisation pour votre sécurité à chaque visite.',
+      'stat1':          "Ans d'expérience",
+      'stat2':          'Spécialités',
+      'avis-eye':       'Témoignages',
+      'avis-title':     'Ce que disent<br>nos <em>patients</em>',
+      'avis1-text':     '« Le Dr Gahlouz est extrêmement professionnel et attentionné. J\'avais très peur du dentiste, il a su me mettre à l\'aise dès la première consultation. »',
+      'avis1-author':   'Fatima B. — Patiente',
+      'avis2-text':     '« Soin rapide, sans douleur et résultat impeccable. L\'accueil est chaleureux et le cabinet est très propre. Je recommande à toute ma famille. »',
+      'avis2-author':   'Karim O. — Patient',
+      'avis3-text':     '« Mon fils avait peur des dentistes mais le docteur a été formidable avec lui. Depuis, il n\'hésite plus à venir à ses rendez-vous. Merci ! »',
+      'avis3-author':   'Nadia M. — Patiente',
+      'contact-eye':    'Contact',
+      'contact-title':  'Prenons <em>rendez-vous</em>',
+      'contact-btn':    '📞 Nous contacter — 05 41 62 29 39',
+      'footer-loc':     'Hammam Bou Hadjar · Aïn Témouchent · Algérie',
+      'footer-copy':    '© 2025 Cabinet dentaire Dr Gahlouz',
+      'footer-legal':   'Mentions légales',
+      'footer-privacy': 'Confidentialité',
+      'sticky':         'Prendre RDV',
+    },
+    ar: {
+      'logo-dr':        'عيادة طب الأسنان',
+      'logo-name':      'د. غلوز',
+      'nav-soins':      'العلاجات',
+      'nav-pourquoi':   'العيادة',
+      'nav-avis':       'آراء المرضى',
+      'nav-contact':    'اتصل بنا',
+      'nav-rdv':        'احجز موعداً',
+      'hero-location':  'حمام بوحجر · عين تموشنت',
+      'hero-h1':        'ابتسامة صحية،<br><em>ثقة مُستعادة</em>',
+      'hero-subtitle':  'د. غلوز — جراح أسنان',
+      'hero-p':         'مرحباً بكم في عيادة إنسانية حيث يُستقبل كل مريض باهتمام. رعاية أسنان عالية الجودة في إطار هادئ ومُطمئن.',
+      'hero-btn1':      'احجز موعداً',
+      'hero-btn2':      'اكتشف علاجاتنا <span>←</span>',
+      'badge1':         'سنة خبرة',
+      'badge2':         'مُكرَّس لراحتكم',
+      'hero-right-loc': 'حمام بوحجر · الجزائر',
+      'soins-eye':      'خدماتنا',
+      'soins-title':    'رعاية شاملة<br>لكل <em>العائلة</em>',
+      's1-title':       'علاجات حافظة',
+      's1-desc':        'علاج التسوس وأمراض اللب وترميمات الكومبوزيت. الحفاظ على أسنانك الطبيعية هو أولويتنا.',
+      's2-title':       'تنظيف الأسنان والوقاية',
+      's2-desc':        'فحص سنوي شامل وتنظيف الأسنان ونصائح مخصصة للحفاظ على صحة فمك.',
+      's3-title':       'تجميل الأسنان',
+      's3-desc':        'تبييض احترافي وقشور الأسنان لابتسامة طبيعية ومتناسقة.',
+      's4-title':       'تركيبات الأسنان',
+      's4-desc':        'تيجان وجسور وأطقم قابلة للخلع مصنوعة خصيصاً. حلول دائمة لتعويض الأسنان المفقودة.',
+      's5-title':       'علاج الأطفال',
+      's5-desc':        'رفق وصبر مع الأطفال. نحرص على أن تكون كل زيارة تجربة إيجابية ومريحة.',
+      's6-title':       'طوارئ الأسنان',
+      's6-desc':        'ألم حاد، سن مكسور، خراج... نبذل كل جهدنا لاستقبالكم بسرعة وتخفيف الألم.',
+      'pq-title':       'لماذا تختار<br>عيادة <em>د. غلوز</em>؟',
+      'pq-p':           'عيادة قريبة منكم حيث تأتي الثقة مع المريض في المقام الأول. كل علاج يتم بعناية ودقة واحترام لراحتكم.',
+      'v1-title':       'الاستماع والرعاية',
+      'v1-desc':        'أسئلتكم واهتماماتكم — نأخذ الوقت الكافي لشرح كل خطوة قبل التصرف.',
+      'v2-title':       'معدات حديثة',
+      'v2-desc':        'أجهزة حديثة لعلاجات أكثر دقة وسرعة وراحة.',
+      'v3-title':       'موقع مركزي',
+      'v3-desc':        'في قلب حمام بوحجر، العيادة سهلة الوصول لجميع أفراد العائلة.',
+      'v4-title':       'تعقيم لا تشوبه شائبة',
+      'v4-desc':        'بروتوكولات صارمة للنظافة والتعقيم لضمان سلامتكم في كل زيارة.',
+      'stat1':          'سنة خبرة',
+      'stat2':          'تخصصات',
+      'avis-eye':       'شهادات المرضى',
+      'avis-title':     'ما يقوله<br><em>مرضانا</em>',
+      'avis1-text':     '« الدكتور غلوز محترف للغاية ومُتفانٍ. كنت خائفة جداً من طبيب الأسنان، لكنه جعلني أرتاح منذ الزيارة الأولى. »',
+      'avis1-author':   'فاطمة ب. — مريضة',
+      'avis2-text':     '« علاج سريع وبدون ألم ونتيجة رائعة. الاستقبال دافئ والعيادة نظيفة جداً. أنصح به لكل عائلتي. »',
+      'avis2-author':   'كريم أ. — مريض',
+      'avis3-text':     '« ابني كان يخشى طبيب الأسنان لكن الدكتور كان رائعاً معه. الآن لا يتردد في الحضور لمواعيده. شكراً! »',
+      'avis3-author':   'نادية م. — مريضة',
+      'contact-eye':    'اتصل بنا',
+      'contact-title':  'لنحجز <em>موعداً</em>',
+      'contact-btn':    '📞 اتصل بنا — 05 41 62 29 39',
+      'footer-loc':     'حمام بوحجر · عين تموشنت · الجزائر',
+      'footer-copy':    '© 2025 عيادة طب الأسنان د. غلوز',
+      'footer-legal':   'المعلومات القانونية',
+      'footer-privacy': 'الخصوصية',
+      'sticky':         'احجز موعداً',
+    }
+  };
+
+  let currentLang = 'fr';
+
+  function toggleLang() {
+    currentLang = currentLang === 'fr' ? 'ar' : 'fr';
+    const html = document.documentElement;
+    html.lang = currentLang;
+    html.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('lang-btn').textContent = currentLang === 'fr' ? 'العربية' : 'Français';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[currentLang][key] !== undefined) {
+        el.innerHTML = t[currentLang][key];
+      }
+    });
+  }
+
+  // ── Nav scroll ──
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ── Fade-in on scroll ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('vis'), i * 90);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.fi-anim').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
